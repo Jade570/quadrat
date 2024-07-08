@@ -1,0 +1,105 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 2px;
+    width: 90vmin; /* Make sure the grid is responsive */
+    height: 90vmin; /* Make sure the grid is responsive */
+}
+.cell {
+    background-color: darkgrey;
+    cursor: pointer;
+    aspect-ratio: 1 / 1; /* Ensures each cell is square */
+    position: relative; /* For positioning shapes inside cells */
+}
+.shape {
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    border: 0;
+}
+.circle {
+    background-color: red;
+    border-radius: 50%;
+}
+.square {
+    background-color: blue;
+}
+/* .triangle {
+    width: 0;
+    height: 0;
+    border-left: 15% solid transparent;
+    border-right: 15% solid transparent;
+    border-bottom: 30% solid green;
+    background-color: transparent;
+} */
+
+.triangle {
+    background-color: green;
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+    /* background-image:
+      linear-gradient(to bottom right, transparent 50%, red 0),
+      linear-gradient(to top right, red 50%, transparent 0);
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    background-position: left, right; */
+  }
+
+/* Positioning for different numbers of shapes */
+.cell[data-shape-count="1"] .shape:nth-child(1) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="2"] .shape:nth-child(1) {
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="2"] .shape:nth-child(2) {
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="3"] .shape:nth-child(1) {
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="3"] .shape:nth-child(2) {
+    top: 30%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="3"] .shape:nth-child(3) {
+    top: 30%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="4"] .shape:nth-child(1) {
+    top: 30%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="4"] .shape:nth-child(2) {
+    top: 30%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="4"] .shape:nth-child(3) {
+    top: 70%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+.cell[data-shape-count="4"] .shape:nth-child(4) {
+    top: 70%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
