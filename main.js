@@ -34,8 +34,7 @@ socket.on('update grid', function(data) {
 
 // Function to get a random shape class
 function getRandomShape() {
-  // const shapes = ['circle', 'square', 'triangle'];
-  const shapes = ["square"];
+  const shapes = ['circle', 'square', 'triangle'];
   return shapes[Math.floor(Math.random() * shapes.length)];
 }
 
