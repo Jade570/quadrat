@@ -32,24 +32,11 @@ body {
 .square {
     background-color: blue;
 }
-/* .triangle {
-    width: 0;
-    height: 0;
-    border-left: 15% solid transparent;
-    border-right: 15% solid transparent;
-    border-bottom: 30% solid green;
-    background-color: transparent;
-} */
+
 
 .triangle {
     background-color: green;
     clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-    /* background-image:
-      linear-gradient(to bottom right, transparent 50%, red 0),
-      linear-gradient(to top right, red 50%, transparent 0);
-    background-size: 50% 100%;
-    background-repeat: no-repeat;
-    background-position: left, right; */
   }
 
 /* Positioning for different numbers of shapes */
