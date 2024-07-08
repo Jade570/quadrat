@@ -30,15 +30,50 @@ io.on("connection", (socket) => {
       cellStacks[data.cellIndex] = [];
     }
 
+    // Calculate the density, frequency, relative density, and relative frequency of each shape
+    const shapeCounts = { circle: 0, square: 0, triangle: 0 };
+    const cellCounts = { circle: 0, square: 0, triangle: 0 };
+    cellStacks.forEach((cellStack) => {
+      const shapeSet = new Set(cellStack);
+      shapeSet.forEach((shape) => {
+        shapeCounts[shape] += cellStack.filter((s) => s === shape).length;
+        cellCounts[shape]++;
+      });
+    });
+    const totalShapes = Object.values(shapeCounts).reduce((a, b) => a + b, 0);
+    const totalCells = Object.values(cellCounts).reduce((a, b) => a + b, 0);
+    const shapeStats = {
+      circle: {
+        density: shapeCounts.circle,
+        frequency: cellCounts.circle,
+        relativeDensity: shapeCounts.circle / totalShapes,
+        relativeFrequency: cellCounts.circle / totalCells,
+      },
+      square: {
+        density: shapeCounts.square,
+        frequency: cellCounts.square,
+        relativeDensity: shapeCounts.square / totalShapes,
+        relativeFrequency: cellCounts.square / totalCells,
+      },
+      triangle: {
+        density: shapeCounts.triangle,
+        frequency: cellCounts.triangle,
+        relativeDensity: shapeCounts.triangle / totalShapes,
+        relativeFrequency: cellCounts.triangle / totalCells,
+      },
+    };
+
     console.log({
       cellIndex: data.cellIndex,
       cellStack: cellStacks[data.cellIndex],
+      shapeStats: shapeStats
     });
 
     // Broadcast the 'update grid' event to all other clients
     socket.broadcast.emit("update grid", {
       cellIndex: data.cellIndex,
       cellStack: cellStacks[data.cellIndex],
+      shapeStats: shapeStats
     });
   });
 
